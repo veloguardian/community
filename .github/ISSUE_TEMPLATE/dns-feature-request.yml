@@ -1,0 +1,59 @@
+name: DNS Feature Request
+description: Suggest a feature or improvement for VeloGuardian DNS
+title: "[Feature] "
+labels: ["enhancement", "dns"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We'd love to hear your ideas for improving VeloGuardian DNS. Please describe the feature you'd like to see.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: What problem does this feature solve? What are you trying to do?
+      placeholder: "I want to be able to ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this to work?
+      placeholder: "It would be great if ..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Product Area
+      options:
+        - Dashboard / Web UI
+        - Filtering / Blocklists
+        - Performance
+        - Reporting / Logs
+        - Setup / Installation
+        - Console CLI
+        - Updates
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any workarounds or alternative solutions you've considered?
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Screenshots, mockups, or links to similar features in other products.
+    validations:
+      required: false

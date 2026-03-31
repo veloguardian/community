@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: VPN & NetGuard Support
+    url: https://veloguardian.com/support.html
+    about: For VPN and NetGuard support, visit our support page or email contact@veloguardian.com
+  - name: Documentation
+    url: https://veloguardian.com/docs.html
+    about: Setup guides and configuration references for DNS and NetGuard
