@@ -12,14 +12,14 @@ The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ### Fixed
 
-- **Boot-time pre-flight self-heal of the category seed directory.** When upgrading from v0.5.0 (or earlier) in place via the `.vgupdate` system, the new binary's pre-flight check refused to start because the on-disk `.txt` seed files still used the legacy category-style filenames. `.vgupdate` packages ship binaries only — not seed files — so the rename had to happen in-process. The new pre-flight in `internal/categories/preflight.go` performs the legacy → Argos rename/merge/drop on disk using the same mapping the migration uses, transparently, on first boot after upgrade. Operator-curated content in pre-existing target files is preserved verbatim. Idempotent.
+- **Boot-time pre-flight self-heal of the category seed directory.** When upgrading from v0.5.0 (or earlier) in place via the `.vgupdate` system, the new binary's pre-flight check refused to start because the on-disk `.txt` seed files still used the legacy pre-Argos filenames. `.vgupdate` packages ship binaries only — not seed files — so the rename had to happen in-process. The new pre-flight performs the legacy → Argos rename/merge/drop on disk using the same mapping the migration uses, transparently, on first boot after upgrade. Operator-curated content in pre-existing target files is preserved verbatim. Idempotent.
 - The pre-flight + auto-rollback safety net behaved correctly throughout the v0.6.0 deploy attempt — the appliance never served traffic with a broken filter engine. The fix is purely additive and data-preserving.
 
 ## [0.6.0] — 2026-05-14
 
 ### Argos taxonomy alignment (Phase 1)
 
-The headline feature of this release. The category taxonomy moved from the legacy 91-slug category layout to **VeloGuardian Argos** — 13 groups × 75 categories — the universal classification standard across every VeloGuardian product. The migration is in-place, idempotent, and rewrites every category reference in profiles, blocklists, schedules, and the on-disk seed files in a single boot.
+The headline feature of this release. The category taxonomy moved from a legacy 91-slug layout to **VeloGuardian Argos** — 13 groups × 75 categories — the universal classification standard across every VeloGuardian product. The migration is in-place, idempotent, and rewrites every category reference in profiles, blocklists, schedules, and the on-disk seed files in a single boot.
 
 ### Added
 
