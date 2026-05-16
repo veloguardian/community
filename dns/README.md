@@ -31,21 +31,15 @@ Three paths, in order of "easiest" to "most flexible". Pick one.
 
 ### 1. OVA virtual machine — canonical
 
-Download the OVA, import it into your hypervisor, walk through the console wizard. Two published filenames, same bytes:
+Download the OVA, verify the checksum, import into your hypervisor, walk through the console wizard:
 
 ```sh
-# Latest (overwritten in place with each release — easiest)
 curl -LO https://www.veloguardian.com/downloads/VeloGuardianDNS.ova
 curl -LO https://www.veloguardian.com/downloads/VeloGuardianDNS.ova.sha256
 sha256sum -c VeloGuardianDNS.ova.sha256
-
-# Versioned mirror (use this URL if you want a reproducible reference to a specific release)
-curl -LO https://www.veloguardian.com/downloads/VeloGuardianDNS-0.6.1.ova
-curl -LO https://www.veloguardian.com/downloads/VeloGuardianDNS-0.6.1.ova.sha256
-sha256sum -c VeloGuardianDNS-0.6.1.ova.sha256
 ```
 
-The appliance also self-updates in place — once installed, the in-app updater (Console option 7, or the System Status page) pulls signed `.vgupdate` packages from the official server. So even if you import an older OVA in the future, the appliance will offer to upgrade itself to the latest binary on first boot.
+`VeloGuardianDNS.ova` is overwritten in place with each release. The version baked into a given download is recorded in the appliance's **System Status** page once it boots, and in the [CHANGELOG](CHANGELOG.md). Once installed, the appliance's in-app updater (Console option 7, or the System Status page) pulls signed `.vgupdate` packages from the official server, so even an older locally-cached OVA will offer to upgrade itself on first boot.
 
 Full step-by-step in [INSTALL.md](INSTALL.md#ova-virtual-machine).
 
