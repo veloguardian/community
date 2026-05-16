@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Tarballs / archives downloaded by the eval script
+eval/work/
+*.tar.gz
+*.vgupdate
+*.vgbackup
+*.ova
+
+# Cached cloud images (qemu eval pulls one to /tmp by default, but ignore here in case)
+*.qcow2
+*.vmdk
+*.vhdx

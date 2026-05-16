@@ -23,13 +23,14 @@ WireGuard-powered VPN with Cloud Shield threat filtering built in. Native apps f
 
 **Free, open-community** DNS filtering appliance for your network.
 
-- 90+ filtering categories
-- Block ads, malware, phishing, and trackers network-wide
-- Self-hosted virtual appliance (OVA) — your data stays on your infrastructure
-- Web dashboard for configuration and monitoring
-- No account required, no telemetry, completely free
+- 13-group / 75-category filtering taxonomy ([VeloGuardian Argos](dns/README.md#filtering-taxonomy)) — block ads, malware, phishing, trackers, and content categories network-wide
+- Self-hosted virtual appliance (OVA) or Debian/Ubuntu installer tarball — your data stays on your infrastructure
+- Web dashboard for configuration, real-time monitoring, query logging, and scheduled PDF reports
+- Per-client filtering profiles and time-based schedule overrides
+- Ed25519-signed in-place updates from the dashboard
+- No account required, no telemetry beyond an optional anonymous heartbeat, completely free
 
-**[Learn more](https://veloguardian.com/dns.html)** | **[Quick Start Guide](https://veloguardian.com/docs/dns/quick-start.html)**
+**[Learn more](https://veloguardian.com/dns.html)** | **[Download & install](dns/README.md#install)** | **[Documentation](https://veloguardian.com/docs/dns/quick-start.html)**
 
 > VeloGuardian DNS is our free community product. We welcome bug reports, feature requests, and feedback via [GitHub Issues](https://github.com/veloguardian/community/issues) and [Discussions](https://github.com/veloguardian/community/discussions).
 
