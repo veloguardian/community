@@ -48,11 +48,12 @@ Full step-by-step in [INSTALL.md](INSTALL.md#ova-virtual-machine).
 If you already manage a Linux box (a Raspberry Pi 4, a VM you spun up yourself, a dedicated low-power machine), this is the smallest footprint.
 
 ```sh
-curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.1-linux-amd64.tar.gz
-curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.1-linux-amd64.tar.gz.sha256
-sha256sum -c veloguardian-dns-0.6.1-linux-amd64.tar.gz.sha256
-tar -xzf veloguardian-dns-0.6.1-linux-amd64.tar.gz
-cd veloguardian-dns-0.6.1
+curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.3-linux-amd64.tar.gz
+curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.3-linux-amd64.tar.gz.sha256
+sha256sum -c veloguardian-dns-0.6.3-linux-amd64.tar.gz.sha256
+mkdir -p veloguardian-dns-0.6.3
+tar -xzf veloguardian-dns-0.6.3-linux-amd64.tar.gz -C veloguardian-dns-0.6.3
+cd veloguardian-dns-0.6.3
 sudo ./install.sh
 ```
 

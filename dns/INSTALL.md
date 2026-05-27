@@ -109,11 +109,11 @@ You're done with the console for now. All ongoing configuration happens in the d
 ### Download and verify
 
 ```sh
-curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.1-linux-amd64.tar.gz
-curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.1-linux-amd64.tar.gz.sha256
+curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.3-linux-amd64.tar.gz
+curl -sSLO https://www.veloguardian.com/downloads/veloguardian-dns-0.6.3-linux-amd64.tar.gz.sha256
 
-sha256sum -c veloguardian-dns-0.6.1-linux-amd64.tar.gz.sha256
-# Expected: veloguardian-dns-0.6.1-linux-amd64.tar.gz: OK
+sha256sum -c veloguardian-dns-0.6.3-linux-amd64.tar.gz.sha256
+# Expected: veloguardian-dns-0.6.3-linux-amd64.tar.gz: OK
 ```
 
 If `sha256sum -c` does not print `OK`, **stop**. The tarball is corrupted or has been tampered with. Re-download and retry.
@@ -121,8 +121,9 @@ If `sha256sum -c` does not print `OK`, **stop**. The tarball is corrupted or has
 ### Install
 
 ```sh
-tar -xzf veloguardian-dns-0.6.1-linux-amd64.tar.gz
-cd veloguardian-dns-0.6.1
+mkdir -p veloguardian-dns-0.6.3
+tar -xzf veloguardian-dns-0.6.3-linux-amd64.tar.gz -C veloguardian-dns-0.6.3
+cd veloguardian-dns-0.6.3
 sudo ./install.sh
 ```
 
