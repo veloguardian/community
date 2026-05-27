@@ -1,0 +1,53 @@
+name: Content guard
+
+# PUBLIC repo. Fails the build if a push/PR introduces:
+#   - AI attribution: Claude/Anthropic co-author trailers or "Generated with" footers (commit messages)
+#   - Vendor trademarks: Fortinet / FortiGuard / FTGD (commit messages AND tracked files)
+# Runs on GitHub, so it protects the repo from EVERY machine, not just ones
+# with the local commit-msg hook installed.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan commit messages and tracked files
+        run: |
+          ai='Co-Authored-By:[[:space:]]*Claude|anthropic\.com|Generated with \[?Claude'
+          vendor='[Ff]ortinet|[Ff]orti[Gg]uard|FTGD'
+          fail=0
+
+          # 1) Commit messages — AI attribution + vendor trademarks.
+          msg_hits="$(git log --pretty=format:'%H' | while read -r sha; do
+            if git show -s --format='%B' "$sha" | grep -Eiq "$ai|$vendor"; then
+              echo "$sha $(git show -s --format='%s' "$sha")"
+            fi
+          done)"
+          if [ -n "$msg_hits" ]; then
+            echo "::error::Blocked term (AI attribution or vendor trademark) in commit message(s):"
+            echo "$msg_hits"
+            fail=1
+          fi
+
+          # 2) Tracked file contents — vendor trademarks only.
+          #    (AI trailers only appear in messages; excluding this workflow, which names the terms.)
+          file_hits="$(git grep -EnI "$vendor" -- . ':(exclude).github/workflows/*' || true)"
+          if [ -n "$file_hits" ]; then
+            echo "::error::Fortinet/FortiGuard/FTGD found in tracked files:"
+            echo "$file_hits"
+            fail=1
+          fi
+
+          if [ "$fail" != 0 ]; then
+            echo ""
+            echo "Remove the offending text before pushing to this public repo."
+            exit 1
+          fi
+          echo "Clean: no AI attribution or vendor trademarks in messages or files."
